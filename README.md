@@ -94,10 +94,6 @@ create table vet_visit_logs (
 - `/types` - TypeScript type definitions
 - `/components` - Reusable UI components
 
-## Development Notes
-
-- The application uses mock data by default for development
-- To use Supabase, uncomment the Supabase API calls in the `petService.ts` file
 
 ## Future Enhancements
 
