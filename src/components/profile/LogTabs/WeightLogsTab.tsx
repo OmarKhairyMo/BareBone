@@ -9,7 +9,10 @@ import { FlatList, StyleSheet, View } from "react-native";
 import Button from "../../common/Button";
 import { EmptyList } from "../../common/EmptyList";
 import { LogsItem } from "../LogsItem";
-import { LogBottomSheet, LogBottomSheetRef } from "../../common/LogBottomSheet";
+import {
+  LogBottomSheet,
+  LogBottomSheetRef,
+} from "../LogBottomSheet/LogBottomSheet";
 import { useAddWeightLog } from "@/src/services/endpoints/addWeightLog";
 export const WeightLogsTab = ({ petId }: { petId: string }) => {
   const bottomSheetRef = useRef<LogBottomSheetRef>(null);
@@ -46,39 +49,42 @@ export const WeightLogsTab = ({ petId }: { petId: string }) => {
 
   return (
     <>
-    <View style={styles.tabContainer}>
-      <FlatList
-        showsVerticalScrollIndicator={false}
-        data={weightLogs}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }: { item: TWeightLog }) => (
-          <LogsItem
-            item={item}
-            logValue={`${item.weight} kg`}
-            iconName="scale-outline"
-          />
-        )}
-        refreshing={isLoading}
-        onRefresh={handleRefresh}
-        ListEmptyComponent={
-          <EmptyList
-            emptyText="No weight logs found"
-            containerStyle={{ height: 300 }}
-            icon={
-              <Ionicons
-                name="scale-outline"
-                size={48}
-                color={colors.textTertiary}
-              />
-            }
-          />
-        }
+      <View style={styles.tabContainer}>
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={weightLogs}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }: { item: TWeightLog }) => (
+            <LogsItem
+              item={item}
+              logValue={`${item.weight} kg`}
+              iconName="scale-outline"
+            />
+          )}
+          refreshing={isLoading}
+          onRefresh={handleRefresh}
+          ListEmptyComponent={
+            <EmptyList
+              emptyText="No weight logs found"
+              containerStyle={{ height: 300 }}
+              icon={
+                <Ionicons
+                  name="scale-outline"
+                  size={48}
+                  color={colors.textTertiary}
+                />
+              }
+            />
+          }
+        />
+        <Button title="Add New Weight Log" onPress={handleOpenBottomSheet} />
+      </View>
+      <LogBottomSheet
+        ref={bottomSheetRef}
+        title="Add New Weight Log"
+        onSubmit={handleAddWeight}
       />
-      <Button title="Add New Weight Log" onPress={handleOpenBottomSheet} />
-    </View>
-    <LogBottomSheet ref={bottomSheetRef} title="Add New Weight Log" onSubmit={handleAddWeight} />
     </>
-
   );
 };
 

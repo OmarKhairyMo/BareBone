@@ -10,11 +10,11 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { StyleSheet, Text } from "react-native";
+import { Text } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { BottomSheet } from "./BottomSheet";
-import Button from "./Button";
-
+import { BottomSheet } from "../../common/BottomSheet/BottomSheet";
+import Button from "../../common/Button";
+import { styles } from "./styles";
 type LogBottomSheetProps = {
   title: string;
   onSubmit: (value: string) => void;
@@ -88,30 +88,3 @@ export const LogBottomSheet = React.forwardRef<
     );
   }
 );
-
-const styles = StyleSheet.create({
-  contentContainer: {
-    flex: 1,
-    padding: 16,
-  },
-  title: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginBottom: 16,
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: "#CCCCCC",
-    borderRadius: 8,
-    padding: 12,
-    fontSize: 16,
-    marginBottom: 16,
-  },
-  multilineInput: {
-    height: 120,
-    textAlignVertical: "top",
-  },
-  buttonDisabled: {
-    backgroundColor: "#CCCCCC",
-  },
-});

@@ -9,7 +9,10 @@ import React, { useRef } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import Button from "../../common/Button";
 import { EmptyList } from "../../common/EmptyList";
-import { LogBottomSheet, LogBottomSheetRef } from "../../common/LogBottomSheet";
+import {
+  LogBottomSheet,
+  LogBottomSheetRef,
+} from "../LogBottomSheet/LogBottomSheet";
 import { LogsItem } from "../LogsItem";
 
 export const BodyConditionTab = ({ petId }: { petId: string }) => {
